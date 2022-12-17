@@ -1,0 +1,86 @@
+h1 {
+    position: absolute;
+    top:20%;
+    left:45%;
+}
+/*Definisco la posizione della scacchiera all'interno del body attribuendole
+la posizione absolute e potendola in questo modo muoverla a piacimento*/
+.Bordo {
+    position: absolute;
+    left: 35%;
+    top: 30%;
+    border: 1px solid black;
+    font-size: 0;
+}
+/*Organizzo posizione e struttura delle righe che comporranno la scacchiera*/
+.Riga div {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    
+}
+/*Organizzo la posizione degli span all'interno dei div più piccoli
+in maniera tale da poterli spostare a piacimento'*/
+.Riga div span {
+    position: absolute;
+    font-size: 1rem;
+}
+/*metodi per colorare i div figli di Riga di nero:
+1) prendo le righe dispari ed i figli pari grazie ai cicli inseriti
+2) prendo le righe pari ed i figli dispari sempre grazie ai cicli
+NB: avrebbero anche funzionato odd ed even*/
+.Riga:nth-child(2n + 1) div:nth-child(2n), .Riga:nth-child(2n) div:nth-child(2n + 1) {
+    background-color: black;
+}
+/*metodi per colorare i div figli di Riga di marrone:
+1) prendo le righe dispari ed i figli dispari grazie ai cicli inseriti
+2) prendo le righe pari ed i figli pari sempre grazie ai cicli
+NB: avrebbero anche funzionato odd ed even*/
+.Riga:nth-child(2n + 1) div:nth-child(2n + 1), .Riga:nth-child(2n) div:nth-child(2n) {
+    background-color: #b09069;
+}
+/*Seleziono la prima riga ed il primo figlio span all'interno di ogni div
+NB: avrebbero funzionato anche first-of-type e last-of-type*/
+.Riga:first-child div span:first-child {
+    left: 40%;
+    top: -40%;
+}
+/*PRIMA ISTRUZIONE
+Scrivendo così, il programma prende tutti i div in posizione 1 figli di riga che contengono
+uno span in posizione 2, quindi solo la prima e l'ultima riga
+NB: avrebbe funzionato anche qui first of type sul div padre
+SECONDA ISTRUZIONE
+Con il not si crea la possibilità di andare a cercare tutte le righe che non sono
+- primi figli
+- ultimi figli
+quindi tutte quelle rimanenti e permettendo una selezione multipla, operazione possibile
+anche con i cicli */
+.Riga div:first-child span:nth-child(2), .Riga:not(:first-child):not(:last-child) div:first-child span {
+    top: 40%;
+    left: -40%;
+}
+/*PRIMA ISTRUZIONE
+Scrivendo così, il programma prende tutti i div in ultima posizione figli di Riga che contengono
+uno span in posizione 2, quindi solo la prima e l'ultima riga
+NB: avrebbe funzionato anche qui last of type sul div padre
+SECONDA ISTRUZIONE
+Con il not si crea la possibilità di andare a cercare tutte le righe che non sono
+- primi figli
+- ultimi figli
+quindi tutte quelle rimanenti e permettendo una selezione multipla, operazione possibile
+anche con i cicli 
+*/
+.Riga div:last-child span:nth-child(2), .Riga:not(:first-child):not(:last-child) div:last-child span {
+    top: 40%;
+    right: -40%;
+}
+/*Seleziono l'ultima riga ed il primo figlio span all'interno di ogni div
+NB: avrebbero funzionato anche first-of-type e last-of-type*/
+.Riga:last-child div span:nth-child(1) {
+    left: 40%;
+    bottom: -40%;
+}
+.Riga div:hover {
+    background-color: red !important;
+}

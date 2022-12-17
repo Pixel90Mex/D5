@@ -1,0 +1,56 @@
+.container {
+    margin-left: 4rem;
+    margin-top: 4rem;
+  }
+  .container div {
+    display: inline-block;
+    width: 70px;
+    height: 60px;
+    border: 1px solid black;
+  }
+  div:nth-child(even) {
+    border-color: red ;
+  }
+  div:nth-child(odd) span:nth-child(even) {
+    color: green;
+  }
+  div:nth-child(2) span:last-of-type {
+    color: blue;
+  }
+  div:nth-child(6) span:not(:last-of-type) { 
+    color: yellow;
+  }
+  div {
+    position: relative;
+  }
+  div span:first-of-type{
+    position: absolute;
+    top: 60px;
+    left: 29px;
+  }
+  div span:nth-child(2) {
+    position:absolute;
+    bottom: 60px;
+    left: 29px;
+  }
+
+  .container div:last-child span:nth-child(4) {
+    position: absolute;
+    left: 75px;
+    top: 20px;
+  }
+
+  .container div:first-child span:nth-child(4) {
+    position: absolute;
+    top: 20px;
+    left: -20px;
+  }
+
+  .container {
+     font-size: 0;
+  }
+
+  .container div {
+
+    font-size: 1rem;
+  }
